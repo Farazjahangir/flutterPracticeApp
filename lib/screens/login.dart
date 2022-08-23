@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../widgets/textInput.dart';
 import '../widgets/button.dart';
@@ -14,8 +15,25 @@ class LoginState extends State<Login> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  void OnPressed() {
-    print(emailController);
+  void OnPressed() async {
+    try {
+      print('PRESSED');
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: 'jahangirfaraz98@gmail.com',
+        password: '12345678',
+      );
+      print('created');
+      print(credential);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   void navigateTo(route) {

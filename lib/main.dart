@@ -7,11 +7,12 @@ import 'screens/register.dart';
 
 void main() async {
   try {
+    WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
   } catch (e) {
-    print("ERRR");
+    print("Firbase ERRR ===>");
     print(e);
   }
 
