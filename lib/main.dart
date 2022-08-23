@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 import 'screens/login.dart';
 import 'screens/register.dart';
 
-void main() {
+void main() async {
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (e) {
+    print("ERRR");
+    print(e);
+  }
+
   runApp(MyApp());
 }
 
