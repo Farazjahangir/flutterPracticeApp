@@ -44,10 +44,10 @@ class LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My App'),
+        title: const Text('My App'),
       ),
       body: Container(
-        color: Color(0xfffdfe4ea),
+        color: const Color(0xfffdfe4ea),
         child: Container(
           margin: const EdgeInsets.only(left: 13, right: 13),
           child: Column(
@@ -55,7 +55,7 @@ class LoginState extends State<Login> {
             children: [
               Container(
                 width: double.infinity,
-                margin: EdgeInsets.only(bottom: 18),
+                margin: const EdgeInsets.only(bottom: 18),
                 child: const Text(
                   "Login",
                   textAlign: TextAlign.center,

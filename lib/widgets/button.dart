@@ -8,12 +8,11 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style =
-        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 16));
     return Container(
       width: double.infinity,
       child: ElevatedButton(
-        style: style,
+        style: ElevatedButton.styleFrom(
+            primary: Color(0xff3b21bf), textStyle: TextStyle(fontSize: 16)),
         onPressed: OnPressed,
         child: Text(title),
       ),
