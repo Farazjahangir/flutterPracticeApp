@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/button.dart';
 import '../widgets/personalInfo.dart';
 import '../widgets/registerAcc.dart';
+import '../widgets/header.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -45,53 +45,61 @@ class RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 26, 24, 29),
-        title: const Text('DAR|Daily Activity Records'),
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomRight,
-          colors: [Color(0xff1d0d63), Color(0xff6d111c)],
-        )),
-        width: double.infinity,
+      body: SafeArea(
         child: Container(
-          width: 10.0,
-          margin: const EdgeInsets.only(left: 13, right: 13),
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomRight,
+            colors: [Color(0xff1d0d63), Color(0xff6d111c)],
+          )),
+          width: double.infinity,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Steps $currentStep/$totalSteps',
-                  style: const TextStyle(fontSize: 16, color: Colors.white)),
-              if (currentStep == 1)
-                PersonalInfo(
-                    nextStep: nextStep,
-                    firstNameController: firstNameController,
-                    lastNameController: lastNameController,
-                    numberController: numberController),
-              if (currentStep == 2)
-                RegisterAcc(
-                    prevStep: prevStep,
-                    emailController: emailController,
-                    passwordController: passwordController,
-                    confirmPasswordController: confirmPasswordController,
-                    register: register),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Already have an account?',
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+              Header(),
+              Expanded(
+                child: Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.only(left: 13, right: 13),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Steps $currentStep/$totalSteps',
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.white)),
+                      if (currentStep == 1)
+                        PersonalInfo(
+                            nextStep: nextStep,
+                            firstNameController: firstNameController,
+                            lastNameController: lastNameController,
+                            numberController: numberController),
+                      if (currentStep == 2)
+                        RegisterAcc(
+                            prevStep: prevStep,
+                            emailController: emailController,
+                            passwordController: passwordController,
+                            confirmPasswordController:
+                                confirmPasswordController,
+                            register: register),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Already have an account?',
+                            style: TextStyle(fontSize: 16, color: Colors.white),
+                          ),
+                          TextButton(
+                              onPressed: () => navigateTo('Login'),
+                              child: const Text("Login",
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.white)))
+                        ],
+                      )
+                    ],
                   ),
-                  TextButton(
-                      onPressed: () => navigateTo('Login'),
-                      child: const Text("Login",
-                          style: TextStyle(fontSize: 16, color: Colors.white)))
-                ],
-              )
+                ),
+              ),
             ],
           ),
         ),
