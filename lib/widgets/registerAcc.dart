@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_app/config/customColors.dart';
 
 import './textInput.dart';
 import './button.dart';
@@ -26,7 +27,7 @@ class RegisterAcc extends StatelessWidget {
           children: [
             const Text(
               "Register Account",
-              style: TextStyle(fontSize: 27, color: Colors.white),
+              style: TextStyle(fontSize: 27, color: Color(white)),
             ),
             SizedBox(
                 width: 45,

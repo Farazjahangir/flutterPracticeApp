@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_app/config/customColors.dart';
 
 import './textInput.dart';
 
@@ -25,7 +26,7 @@ class PersonalInfo extends StatelessWidget {
               Container(
                 child: const Text(
                   "Provide Your Info",
-                  style: TextStyle(fontSize: 27, color: Colors.white),
+                  style: TextStyle(fontSize: 27, color: Color(white)),
                 ),
               ),
               SizedBox(

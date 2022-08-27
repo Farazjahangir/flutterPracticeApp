@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_app/config/customColors.dart';
 
 class TextInput extends StatelessWidget {
   final TextEditingController controller;
@@ -17,20 +18,19 @@ class TextInput extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 15),
       child: TextFormField(
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Color(white)),
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
             label: Text(label),
-            labelStyle: TextStyle(color: Colors.white),
+            labelStyle: TextStyle(color: Color(white)),
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: placeHolder,
-            hintStyle: TextStyle(color: Colors.white, fontSize: 13),
+            hintStyle: TextStyle(color: Color(white), fontSize: 13),
             border: OutlineInputBorder(),
             contentPadding: EdgeInsets.fromLTRB(8, 0, 8, 0),
             enabledBorder: const OutlineInputBorder(
-                borderSide:
-                    BorderSide(color: Color.fromARGB(138, 158, 158, 158)),
+                borderSide: BorderSide(color: Color(grey)),
                 borderRadius: BorderRadius.all(Radius.circular(10.0)))),
       ),
     );

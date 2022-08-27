@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/personalInfo.dart';
 import '../widgets/registerAcc.dart';
 import '../widgets/header.dart';
+import '../config/customColors.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -47,11 +48,11 @@ class RegisterState extends State<Register> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
               gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomRight,
-            colors: [Color(0xff1d0d63), Color(0xff6d111c)],
+            colors: [Color(mainGradient[0]), Color(mainGradient[1])],
           )),
           width: double.infinity,
           child: Column(
@@ -67,7 +68,7 @@ class RegisterState extends State<Register> {
                     children: [
                       Text('Steps $currentStep/$totalSteps',
                           style: const TextStyle(
-                              fontSize: 16, color: Colors.white)),
+                              fontSize: 16, color: Color(white))),
                       if (currentStep == 1)
                         PersonalInfo(
                             nextStep: nextStep,
@@ -87,13 +88,13 @@ class RegisterState extends State<Register> {
                         children: [
                           const Text(
                             'Already have an account?',
-                            style: TextStyle(fontSize: 16, color: Colors.white),
+                            style: TextStyle(fontSize: 16, color: Color(white)),
                           ),
                           TextButton(
                               onPressed: () => navigateTo('Login'),
                               child: const Text("Login",
                                   style: TextStyle(
-                                      fontSize: 16, color: Colors.white)))
+                                      fontSize: 16, color: Color(white))))
                         ],
                       )
                     ],
