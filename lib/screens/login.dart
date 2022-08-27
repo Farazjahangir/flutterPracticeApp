@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../widgets/textInput.dart';
 import '../widgets/button.dart';
+import '../widgets/header.dart';
+import '../config/customColors.dart';
 
 class Login extends StatefulWidget {
   // const Login({ Login? key }) : super(Login: key);
@@ -43,66 +45,90 @@ class LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('My App'),
-      ),
-      body: Container(
-        color: const Color(0xfffdfe4ea),
+      body: SafeArea(
         child: Container(
-          margin: const EdgeInsets.only(left: 13, right: 13),
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomRight,
+            colors: [Color(mainGradient[0]), Color(mainGradient[1])],
+          )),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                width: double.infinity,
-                margin: const EdgeInsets.only(bottom: 18),
-                child: const Text(
-                  "Login",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 40),
-                ),
-              ),
-              Container(
-                child: Form(
+              Header(),
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 13, right: 13),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextInput(
-                        controller: emailController,
-                        placeHolder: "Enter your email",
+                      const SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          "Log into your account",
+                          style: TextStyle(fontSize: 27, color: Color(white)),
+                        ),
                       ),
-                      TextInput(
-                        controller: passwordController,
-                        obscureText: true,
-                        placeHolder: 'Enter Your Password',
-                      ),
-                      Button('Login', OnPressed),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Column(
                         children: [
                           Container(
-                            child: TextButton(
-                              onPressed: () => navigateTo('Register'),
-                              child: const Text('Register',
-                                  style: TextStyle(
-                                      fontSize: 14, color: Colors.black)),
+                            margin: const EdgeInsets.only(top: 10),
+                            child: TextInput(
+                              controller: emailController,
+                              placeHolder: "Enter your email",
                             ),
                           ),
                           Container(
-                              child: TextButton(
-                            onPressed: () {},
-                            child: const Text(
-                              'Forgot Password',
-                              style:
-                                  TextStyle(fontSize: 14, color: Colors.black),
-                              textAlign: TextAlign.right,
+                            margin: const EdgeInsets.only(top: 10),
+                            child: TextInput(
+                              controller: passwordController,
+                              obscureText: true,
+                              placeHolder: 'Enter Your Password',
                             ),
-                          )),
+                          ),
+                          Container(
+                              margin: const EdgeInsets.only(top: 10),
+                              child: Button('Login', OnPressed)),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextButton(
+                                onPressed: () {},
+                                child: const Text('Reset Password',
+                                    style: TextStyle(
+                                        fontSize: 16, color: Color(white))),
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: const Text(
+                                  'Forgot Password',
+                                  style: TextStyle(
+                                      fontSize: 16, color: Color(white)),
+                                  textAlign: TextAlign.right,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              const Text(
+                                'Not have an account?',
+                                style: TextStyle(
+                                    fontSize: 16, color: Color(white)),
+                              ),
+                              TextButton(
+                                  onPressed: () => navigateTo('Register'),
+                                  child: const Text('Register',
+                                      style: TextStyle(
+                                          fontSize: 16, color: Color(white))))
+                            ],
+                          ),
                         ],
                       )
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
